@@ -3,8 +3,26 @@ import 'package:flutter/widgets.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 
-class UsernameScreen extends StatelessWidget {
+class UsernameScreen extends StatefulWidget {
   const UsernameScreen({super.key});
+
+  @override
+  State<UsernameScreen> createState() => _UsernameScreenState();
+}
+
+class _UsernameScreenState extends State<UsernameScreen> {
+  final TextEditingController _usernameController = TextEditingController();
+  String _username = "";
+  @override
+  void initState() {
+    super.initState();
+    _usernameController.addListener(() {
+      print(_usernameController.text);
+      setState(() {
+        _username = _usernameController.text;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +57,7 @@ class UsernameScreen extends StatelessWidget {
               ),
               Gaps.v10,
               TextField(
+                controller: _usernameController,
                 decoration: InputDecoration(
                   hintText: "Username",
                   hintStyle: TextStyle(
@@ -60,13 +79,19 @@ class UsernameScreen extends StatelessWidget {
               Gaps.v16,
               FractionallySizedBox(
                   widthFactor: 1,
-                  child: Container(
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 500),
                     padding: const EdgeInsets.symmetric(
                       vertical: Sizes.size16,
                       horizontal: Sizes.size20,
                     ),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
+                      borderRadius: BorderRadius.circular(
+                        Sizes.size5,
+                      ),
+                      color: _username.isEmpty
+                          ? Colors.grey.shade400
+                          : Theme.of(context).primaryColor,
                     ),
                     child: const Text("Next",
                         textAlign: TextAlign.center,
