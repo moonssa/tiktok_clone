@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
-import 'package:tiktok_clone/features/authentication/email_screen.dart';
 import 'package:tiktok_clone/features/authentication/widgets.dart/form_button.dart';
 import 'package:tiktok_clone/features/onboarding/interests_screen.dart';
 
@@ -17,11 +16,13 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
   final TextEditingController _birthdayController = TextEditingController();
 
   DateTime initialDate = DateTime.now();
+  late DateTime twelveYearsAgo =
+      DateTime(initialDate.year - 12, initialDate.month, initialDate.day);
 
   @override
   void initState() {
     super.initState();
-    _setTextFieldDate(initialDate);
+    _setTextFieldDate(twelveYearsAgo);
   }
 
   @override
@@ -72,12 +73,20 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
                 color: Colors.black54,
               ),
             ),
+            const SizedBox(height: 10),
+            const Text(
+              "You must be at least 12 years old",
+              style: TextStyle(
+                fontSize: Sizes.size16,
+                fontWeight: FontWeight.w600,
+                color: Colors.red,
+              ),
+            ),
             Gaps.v10,
             TextField(
               readOnly: true,
               controller: _birthdayController,
               decoration: InputDecoration(
-                // hintText:
                 hintStyle: TextStyle(
                   color: Colors.grey.shade400,
                 ),
@@ -109,8 +118,8 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
         surfaceTintColor: Colors.white,
         child: CupertinoDatePicker(
           mode: CupertinoDatePickerMode.date,
-          initialDateTime: initialDate,
-          maximumDate: initialDate,
+          initialDateTime: twelveYearsAgo,
+          maximumDate: twelveYearsAgo,
           onDateTimeChanged: _setTextFieldDate,
         ),
       ),
