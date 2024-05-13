@@ -32,9 +32,11 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
   }
 
   void _onNextTap() {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => const InterestsScreen(),
-    ));
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const InterestsScreen(),
+      ),
+    );
   }
 
   void _setTextFieldDate(DateTime date) {
@@ -113,14 +115,17 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        height: 300,
-        surfaceTintColor: Colors.white,
-        child: CupertinoDatePicker(
-          mode: CupertinoDatePickerMode.date,
-          initialDateTime: twelveYearsAgo,
-          maximumDate: twelveYearsAgo,
-          onDateTimeChanged: _setTextFieldDate,
+      bottomNavigationBar: PreferredSize(
+        preferredSize: const Size.fromHeight(400),
+        child: BottomAppBar(
+          height: 300,
+          surfaceTintColor: Colors.white,
+          child: CupertinoDatePicker(
+            mode: CupertinoDatePickerMode.date,
+            initialDateTime: twelveYearsAgo,
+            maximumDate: twelveYearsAgo,
+            onDateTimeChanged: _setTextFieldDate,
+          ),
         ),
       ),
     );
