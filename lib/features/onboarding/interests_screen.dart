@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
+import 'package:tiktok_clone/features/authentication/widgets.dart/interest_button.dart';
 
 const interests = [
   "Daily Life",
@@ -113,32 +114,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
                   spacing: 15,
                   children: [
                     for (var interest in interests)
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: Sizes.size24,
-                          vertical: Sizes.size14,
-                        ),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(Sizes.size24),
-                            border: Border.all(
-                              color: Colors.black.withOpacity(0.1),
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.05),
-                                blurRadius: 5,
-                                spreadRadius: 3,
-                              ),
-                            ]),
-                        child: Text(
-                          interest,
-                          style: const TextStyle(
-                            // fontSize: Sizes.size14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
+                      InterestButton(interest: interest),
                   ],
                 ),
               ],
