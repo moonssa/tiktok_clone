@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
+import 'package:tiktok_clone/features/main_navigation/stf_screen.dart';
 import 'package:tiktok_clone/features/main_navigation/widgets/nav_tab.dart';
 
 class MainNavigationScreen extends StatefulWidget {
@@ -51,7 +52,28 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       // body: screens[_selectedIndex],
-      body: screens.elementAt(_selectedIndex),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Offstage(
+              offstage: _selectedIndex != 0,
+              child: const StfScreen(),
+            ),
+            Offstage(
+              offstage: _selectedIndex != 1,
+              child: const StfScreen(),
+            ),
+            Offstage(
+              offstage: _selectedIndex != 3,
+              child: const StfScreen(),
+            ),
+            Offstage(
+              offstage: _selectedIndex != 4,
+              child: const StfScreen(),
+            ),
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomAppBar(
           color: Colors.black,
           child: Row(
