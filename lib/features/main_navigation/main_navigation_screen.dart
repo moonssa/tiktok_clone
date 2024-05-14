@@ -18,15 +18,9 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     const Center(
       child: Text("Search"),
     ),
-    const Center(
-      child: Text("Home"),
-    ),
-    const Center(
-      child: Text("Search"),
-    ),
-    const Center(
-      child: Text("Home"),
-    ),
+    // const Center(
+    //   child: Text("Home"),
+    // ),
   ];
 
   void _onTap(int index) {
@@ -40,55 +34,17 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: screens[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        // selectedItemColor: Theme.of(context).primaryColor,
-        // unselectedItemColor: Colors.grey,
-
-        currentIndex: _selectedIndex,
-        onTap: _onTap,
-        items: const [
-          BottomNavigationBarItem(
-            label: "Home",
-            icon: FaIcon(
-              FontAwesomeIcons.house,
-            ),
-            tooltip: "Go home",
-            backgroundColor: Colors.teal,
-          ),
-          BottomNavigationBarItem(
-            label: "Search",
-            icon: FaIcon(
-              FontAwesomeIcons.magnifyingGlass,
-            ),
-            tooltip: "What do you serach?",
-            backgroundColor: Colors.blue,
-          ),
-          BottomNavigationBarItem(
-            label: "Home",
-            icon: FaIcon(
-              FontAwesomeIcons.house,
-            ),
-            tooltip: "Go home",
-            backgroundColor: Colors.amber,
-          ),
-          BottomNavigationBarItem(
-            label: "Search",
-            icon: FaIcon(
-              FontAwesomeIcons.magnifyingGlass,
-            ),
-            tooltip: "What do you serach?",
-            backgroundColor: Colors.orange,
-          ),
-          BottomNavigationBarItem(
-            label: "Home",
-            icon: FaIcon(
-              FontAwesomeIcons.house,
-            ),
-            tooltip: "Go home",
-            backgroundColor: Colors.green,
-          ),
-        ],
-      ),
+      bottomNavigationBar: NavigationBar(
+          labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+          selectedIndex: _selectedIndex,
+          onDestinationSelected: _onTap,
+          destinations: const [
+            NavigationDestination(
+                icon: FaIcon(FontAwesomeIcons.house), label: "Home"),
+            NavigationDestination(
+                icon: FaIcon(FontAwesomeIcons.magnifyingGlass),
+                label: "Search"),
+          ]),
     );
   }
 }
