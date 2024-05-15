@@ -37,6 +37,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       // body: screens[_selectedIndex],
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: Stack(
           children: [
