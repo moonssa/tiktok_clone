@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
@@ -16,8 +14,24 @@ final tabs = [
   "Brands",
 ];
 
-class DiscoverScreen extends StatelessWidget {
+class DiscoverScreen extends StatefulWidget {
   const DiscoverScreen({super.key});
+
+  @override
+  State<DiscoverScreen> createState() => _DiscoverScreenState();
+}
+
+class _DiscoverScreenState extends State<DiscoverScreen> {
+  // final TabController _tabController = TabController(length:tabs.length, vsync: TickerPro);
+  final TextEditingController _textEditingController =
+      TextEditingController(text: "Initial Text");
+  void _onSearchChanged(String value) {
+    print(value);
+  }
+
+  void _onSearchSubmitted(String value) {
+    print(value);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +39,12 @@ class DiscoverScreen extends StatelessWidget {
       length: tabs.length,
       child: Scaffold(
           // backgroundColor: Colors.white,
+          resizeToAvoidBottomInset: false,
           appBar: AppBar(
-            title: const Text(
-              "Discover",
+            title: CupertinoSearchTextField(
+              controller: _textEditingController,
+              onChanged: _onSearchChanged,
+              onSubmitted: _onSearchSubmitted,
             ),
             bottom: TabBar(
               splashFactory: NoSplash.splashFactory,
@@ -53,6 +70,8 @@ class DiscoverScreen extends StatelessWidget {
           body: TabBarView(
             children: [
               GridView.builder(
+                keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
                 itemCount: 20,
                 padding: const EdgeInsets.all(
                   Sizes.size6,
@@ -65,14 +84,21 @@ class DiscoverScreen extends StatelessWidget {
                 ),
                 itemBuilder: (context, index) => Column(
                   children: [
-                    AspectRatio(
-                      aspectRatio: 9 / 16,
-                      child: FadeInImage.assetNetwork(
-                          fit: BoxFit.cover,
-                          placeholderFit: BoxFit.cover,
-                          placeholder: "assets/images/kyu1.jpg",
-                          image:
-                              "https://images.unsplash.com/photo-1571936804022-90d128047136?q=80&w=2753&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
+                    Container(
+                      clipBehavior: Clip.hardEdge,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                        Sizes.size8,
+                      )),
+                      child: AspectRatio(
+                        aspectRatio: 9 / 16,
+                        child: FadeInImage.assetNetwork(
+                            fit: BoxFit.cover,
+                            placeholderFit: BoxFit.cover,
+                            placeholder: "assets/images/kyu1.jpg",
+                            image:
+                                "https://images.unsplash.com/photo-1571936804022-90d128047136?q=80&w=2753&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
+                      ),
                     ),
                     Gaps.v10,
                     const Text(
