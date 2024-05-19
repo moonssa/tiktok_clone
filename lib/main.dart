@@ -37,6 +37,6 @@ class TikTokApp extends StatelessWidget {
               )),
           useMaterial3: true,
         ),
-        home: const ActivityScreen());
+        home: const MainNavigationScreen());
   }
 }
