@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
+import 'package:tiktok_clone/features/inbox/chat_detail_screen.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -40,9 +41,16 @@ class _ChatScreenState extends State<ChatScreen> {
     }
   }
 
+  void _onChatTap() {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => const ChatDetailScreen(),
+    ));
+  }
+
   Widget _makeTile(int index) {
     return ListTile(
       onLongPress: () => _onDeleteItem(index),
+      onTap: _onChatTap,
       leading: const CircleAvatar(
         radius: Sizes.size32,
         foregroundImage: NetworkImage(
