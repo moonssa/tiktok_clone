@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
@@ -86,26 +88,55 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   ),
                   Gaps.v14,
                   FractionallySizedBox(
-                    widthFactor: 0.33,
-                    child: Container(
-                        padding:
-                            const EdgeInsets.symmetric(vertical: Sizes.size12),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).primaryColor,
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(
-                              Sizes.size4,
+                    widthFactor: 0.6,
+                    alignment: Alignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: Sizes.size52,
+                                vertical: Sizes.size10),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColor,
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(
+                                  Sizes.size4,
+                                ),
+                              ),
+                            ),
+                            child: const Text(
+                              "Follow",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              textAlign: TextAlign.center,
+                            )),
+                        Container(
+                          padding: const EdgeInsets.all(Sizes.size8),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1,
+                              color: Colors.grey.shade400,
                             ),
                           ),
+                          child: const FaIcon(FontAwesomeIcons.youtube,
+                              size: Sizes.size20),
                         ),
-                        child: const Text(
-                          "Follow",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
+                        Container(
+                          padding: const EdgeInsets.all(Sizes.size10),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1,
+                              color: Colors.grey.shade400,
+                            ),
                           ),
-                          textAlign: TextAlign.center,
-                        )),
+                          child: const FaIcon(FontAwesomeIcons.download,
+                              size: Sizes.size16),
+                        ),
+                      ],
+                    ),
                   ),
                   Gaps.v14,
                   const Padding(
@@ -152,7 +183,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
               mainAxisSpacing: Sizes.size2,
               childAspectRatio: 9 / 14,
             ),
-            itemBuilder: (context, index) => Column(
+            itemBuilder: (context, index) => Stack(
               children: [
                 AspectRatio(
                   aspectRatio: 9 / 14,
@@ -163,6 +194,38 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       image:
                           "https://images.unsplash.com/photo-1715791546577-dfdd588f734e?q=80&w=3388&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                 ),
+                const Positioned(
+                  bottom: 1,
+                  child: Row(
+                    children: [
+                      Icon(Icons.play_arrow_outlined, color: Colors.white),
+                      Text(
+                        "4.1M",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                if (index == 0)
+                  Positioned(
+                      left: 4,
+                      top: 3,
+                      child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: Sizes.size4,
+                            vertical: Sizes.size3,
+                          ),
+                          decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColor),
+                          child: const Text("Pinned",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: Sizes.size12,
+                                fontWeight: FontWeight.bold,
+                              )))),
               ],
             ),
           ),
