@@ -11,6 +11,7 @@ class VideoButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        if (text == "") Gaps.v14,
         FaIcon(
           icon,
           color: Colors.white,
