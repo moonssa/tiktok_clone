@@ -139,6 +139,31 @@ class _SettingScreenState extends State<SettingScreen> {
               );
             },
           ),
+          ListTile(
+            title: const Text("Log out(iOS/button)"),
+            textColor: Colors.red,
+            onTap: () {
+              showCupertinoModalPopup(
+                context: context,
+                builder: (context) => CupertinoActionSheet(
+                  title: const Text("Are you sure?"),
+                  message: const Text("Cupertino action sheet test"),
+                  actions: [
+                    CupertinoActionSheetAction(
+                      isDefaultAction: true,
+                      onPressed: () {},
+                      child: const Text("Not go Out"),
+                    ),
+                    CupertinoActionSheetAction(
+                      isDestructiveAction: true,
+                      onPressed: () {},
+                      child: const Text("Yes Please"),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
           const AboutListTile(),
         ],
       ),
