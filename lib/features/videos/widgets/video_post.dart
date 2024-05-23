@@ -27,6 +27,7 @@ class _VideoPostState extends State<VideoPost>
 
   bool _isPaused = false;
   bool _seeMore = false;
+  bool _isVolume = false;
 
   final Duration _animationDuration = const Duration(milliseconds: 200);
   late final AnimationController _animationController;
@@ -47,6 +48,7 @@ class _VideoPostState extends State<VideoPost>
     await _videoPlayerController.setLooping(true);
     if (kIsWeb) {
       await _videoPlayerController.setVolume(0);
+      _isVolume = false;
     }
     _videoPlayerController.addListener(_onVideoChange);
     setState(() {});
@@ -78,6 +80,16 @@ class _VideoPostState extends State<VideoPost>
 
   void _onSeeMoreToogle() {
     _seeMore = !_seeMore;
+    setState(() {});
+  }
+
+  void _onVolumeToogle() async {
+    _isVolume = !_isVolume;
+    if (_isVolume) {
+      await _videoPlayerController.setVolume(1);
+    } else {
+      await _videoPlayerController.setVolume(0);
+    }
     setState(() {});
   }
 
@@ -238,6 +250,14 @@ class _VideoPostState extends State<VideoPost>
                   child: const VideoButton(
                     icon: FontAwesomeIcons.solidCommentDots,
                     text: "33.0K",
+                  ),
+                ),
+                GestureDetector(
+                  onTap: _onVolumeToogle,
+                  child: VideoButton(
+                    icon: _isVolume
+                        ? FontAwesomeIcons.volumeHigh
+                        : FontAwesomeIcons.volumeXmark,
                   ),
                 ),
                 Gaps.v20,
