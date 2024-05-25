@@ -39,11 +39,14 @@ class SignUpScreen extends StatelessWidget {
                 children: [
                   if (orientation == Orientation.portrait) Gaps.v80,
                   if (orientation == Orientation.landscape) Gaps.v20,
-                  const Text("Sign up for TikTok",
-                      style: TextStyle(
-                        fontSize: Sizes.size24 + Sizes.size2,
-                        fontWeight: FontWeight.w700,
-                      )),
+                  Text(
+                    "Sign up for TikTok",
+                    style: Theme.of(context).textTheme.headlineLarge,
+                    // style: TextStyle(
+                    //   fontSize: Sizes.size24 + Sizes.size2,
+                    //   fontWeight: FontWeight.w700,
+                    // ),
+                  ),
                   Gaps.v20,
                   Text(
                     "Create a profile, follow other accounts, make your own videos, and more.",
