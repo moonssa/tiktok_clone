@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/features/authentication/username_screen.dart';
@@ -39,13 +40,12 @@ class SignUpScreen extends StatelessWidget {
                 children: [
                   if (orientation == Orientation.portrait) Gaps.v80,
                   if (orientation == Orientation.landscape) Gaps.v20,
-                  Text(
+                  const Text(
                     "Sign up for TikTok",
-                    style: Theme.of(context).textTheme.headlineLarge,
-                    // style: TextStyle(
-                    //   fontSize: Sizes.size24 + Sizes.size2,
-                    //   fontWeight: FontWeight.w700,
-                    // ),
+                    style: TextStyle(
+                      fontSize: Sizes.size24 + Sizes.size2,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                   Gaps.v20,
                   Text(
