@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
@@ -42,13 +43,16 @@ class LoginScreen extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                   )),
               Gaps.v20,
-              const Text(
-                "Manage your account, check notifications, comment on videos, and more.",
-                style: TextStyle(
-                  fontSize: Sizes.size16,
-                  color: Colors.black45,
+              const Opacity(
+                opacity: 0.7,
+                child: Text(
+                  "Manage your account, check notifications, comment on videos, and more.",
+                  style: TextStyle(
+                    fontSize: Sizes.size16,
+                    // color: Colors.black45,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
               Gaps.v40,
               GestureDetector(
