@@ -44,11 +44,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       resizeToAvoidBottomInset: false,
       // body: screens[_selectedIndex],
 
-      backgroundColor: _selectedIndex == 0
-          ? Colors.black
-          : isDark
-              ? Colors.grey.shade900
-              : Colors.white,
+      backgroundColor:
+          _selectedIndex == 0 || isDark ? Colors.black : Colors.white,
       body: SafeArea(
         child: Stack(
           children: [
