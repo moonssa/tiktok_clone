@@ -125,7 +125,9 @@ class _TutorialScreenState extends State<TutorialScreen> {
               child: CupertinoButton(
                 onPressed: _onEnterAppTap,
                 color: Theme.of(context).primaryColor,
-                child: const Text("Enter the App!"),
+                child: const Text(
+                  "Enter the App!",
+                ),
               ),
             ),
           ),
