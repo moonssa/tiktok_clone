@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/features/authentication/sign_up_screen.dart';
 import 'package:tiktok_clone/features/main_navigation/main_navigation_screen.dart';
 import 'package:tiktok_clone/features/settings/settings_screen.dart';
-// import 'package:tiktok_clone/features/onboarding/interests_screen.dart';
-import 'package:flutter_gen/gen_l10n/intl_generated.dart';
+import 'package:tiktok_clone/generated/l10n.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,16 +27,21 @@ class TikTokApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    S.load(const Locale("en"));
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'TikTok Clone',
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        // supportedLocales: const [
-        //   Locale("en"),
-        //   Locale("ko"),
-        //   Locale("es"),
-        // ],
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale("en"),
+          Locale("ko"),
+          Locale("es"),
+        ],
         themeMode: ThemeMode.system,
         theme: ThemeData(
           brightness: Brightness.light,

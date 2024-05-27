@@ -1,5 +1,0 @@
-# 번역파일(.arb)의 위치를 명시
-arb-dir: lib/intl
-template-arb-file: intl_en.arb
-# 생성된 코드 위치 명시
-output-localization-file: intl_generated.dart
