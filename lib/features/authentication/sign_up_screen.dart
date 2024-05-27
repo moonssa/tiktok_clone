@@ -47,7 +47,7 @@ class SignUpScreen extends StatelessWidget {
                   if (orientation == Orientation.portrait) Gaps.v80,
                   if (orientation == Orientation.landscape) Gaps.v20,
                   Text(
-                    S.of(context).signUpTitle("TikTok"),
+                    S.of(context).signUpTitle("TikTok", DateTime.now()),
                     // "Sign up for TikTok",
                     style: const TextStyle(
                       fontSize: Sizes.size24 + Sizes.size2,
