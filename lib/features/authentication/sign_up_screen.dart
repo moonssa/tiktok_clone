@@ -1,12 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/features/authentication/username_screen.dart';
 import 'package:tiktok_clone/features/authentication/login_screen.dart';
 import 'package:tiktok_clone/features/authentication/widgets.dart/auth_button.dart';
 import 'package:tiktok_clone/utils.dart';
+import 'package:flutter_gen/gen_l10n/intl_generated.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -27,9 +28,14 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (kDebugMode) {
+      print(Localizations.localeOf(context));
+    }
     return OrientationBuilder(
       builder: (context, orientation) {
-        print(orientation);
+        if (kDebugMode) {
+          print(orientation);
+        }
         return Scaffold(
           body: SafeArea(
             child: Padding(
@@ -40,9 +46,10 @@ class SignUpScreen extends StatelessWidget {
                 children: [
                   if (orientation == Orientation.portrait) Gaps.v80,
                   if (orientation == Orientation.landscape) Gaps.v20,
-                  const Text(
-                    "Sign up for TikTok",
-                    style: TextStyle(
+                  Text(
+                    // "Sign up for TikTok",
+                    AppLocalizations.of(context)!.signUpTitle("TikTok"),
+                    style: const TextStyle(
                       fontSize: Sizes.size24 + Sizes.size2,
                       fontWeight: FontWeight.w700,
                     ),

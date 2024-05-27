@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/features/authentication/sign_up_screen.dart';
-// import 'package:tiktok_clone/features/authentication/sign_up_screen.dart';
 import 'package:tiktok_clone/features/main_navigation/main_navigation_screen.dart';
-// import 'package:tiktok_clone/features/authentication/sign_up_screen.dart';
+import 'package:tiktok_clone/features/settings/settings_screen.dart';
 // import 'package:tiktok_clone/features/onboarding/interests_screen.dart';
+import 'package:flutter_gen/gen_l10n/intl_generated.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +32,13 @@ class TikTokApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'TikTok Clone',
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        // supportedLocales: const [
+        //   Locale("en"),
+        //   Locale("ko"),
+        //   Locale("es"),
+        // ],
         themeMode: ThemeMode.system,
         theme: ThemeData(
           brightness: Brightness.light,
@@ -44,6 +52,7 @@ class TikTokApp extends StatelessWidget {
           ),
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
           appBarTheme: const AppBarTheme(
+            surfaceTintColor: Colors.white,
             backgroundColor: Colors.white,
             foregroundColor: Colors.black,
             titleTextStyle: TextStyle(
@@ -67,7 +76,13 @@ class TikTokApp extends StatelessWidget {
             cursorColor: Color(0xFFE9435A),
           ),
           appBarTheme: AppBarTheme(
+            surfaceTintColor: Colors.grey.shade900,
             backgroundColor: Colors.grey.shade900,
+            titleTextStyle: const TextStyle(
+              color: Colors.white,
+              fontSize: Sizes.size16 + Sizes.size2,
+              fontWeight: FontWeight.w600,
+            ),
           ),
           scaffoldBackgroundColor: Colors.black,
           primaryColor: const Color(0xFFE9435A),
@@ -76,8 +91,11 @@ class TikTokApp extends StatelessWidget {
             labelColor: Colors.white,
             unselectedLabelColor: Colors.grey.shade500,
           ),
+          iconTheme: IconThemeData(
+            color: Colors.grey.shade100,
+          ),
           useMaterial3: true,
         ),
-        home: const MainNavigationScreen());
+        home: const SignUpScreen());
   }
 }
