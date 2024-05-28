@@ -39,7 +39,7 @@ class SignUpScreen extends StatelessWidget {
             ),
           );
         })); */
-    context.push(UsernameScreen.routeName);
+    context.push("/users/moon?show=likes");
   }
 
   @override

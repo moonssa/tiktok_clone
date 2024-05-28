@@ -6,7 +6,10 @@ import 'package:tiktok_clone/features/settings/settings_screen.dart';
 import 'package:tiktok_clone/users/widgets/persistant_tab_bar.dart';
 
 class UserProfileScreen extends StatefulWidget {
-  const UserProfileScreen({super.key});
+  const UserProfileScreen(
+      {super.key, required this.username, required this.tab});
+  final String username;
+  final String tab;
 
   @override
   State<UserProfileScreen> createState() => _UserProfileScreenState();
@@ -24,12 +27,13 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
       body: DefaultTabController(
+        initialIndex: widget.tab == "likes" ? 1 : 0,
         length: 2,
         child: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
               SliverAppBar(
-                title: const Text("Moon"),
+                title: Text(widget.username),
                 actions: [
                   IconButton(
                     onPressed: _onGearPressed,
@@ -42,25 +46,25 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
               SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    const CircleAvatar(
+                    CircleAvatar(
                       radius: 40,
-                      foregroundImage: NetworkImage(
+                      foregroundImage: const NetworkImage(
                           "https://avatars.githubusercontent.com/u/90151845?v=4"),
-                      child: Text("문경"),
+                      child: Text(widget.username),
                     ),
                     Gaps.v20,
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "@mkjoehsb",
-                          style: TextStyle(
+                          "@${widget.username}",
+                          style: const TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: Sizes.size16,
                           ),
                         ),
                         Gaps.h10,
-                        FaIcon(
+                        const FaIcon(
                           FontAwesomeIcons.solidCircleCheck,
                           color: Colors.blue,
                           size: Sizes.size16,
