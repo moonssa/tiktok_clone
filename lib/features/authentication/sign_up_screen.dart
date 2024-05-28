@@ -12,12 +12,13 @@ import 'package:tiktok_clone/utils.dart';
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
 
-  _onLoginTap(BuildContext context) {
-    Navigator.of(context).push(
+  _onLoginTap(BuildContext context) async {
+    final result = await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => const LoginScreen(),
       ),
     );
+    print(result);
   }
 
   _onEmailTap(BuildContext context) {
@@ -47,7 +48,7 @@ class SignUpScreen extends StatelessWidget {
                   if (orientation == Orientation.portrait) Gaps.v80,
                   if (orientation == Orientation.landscape) Gaps.v20,
                   Text(
-                    S.of(context).signUpTitle("TikTok", DateTime.now()),
+                    S.of(context).signUpTitle("TikTok"),
                     // "Sign up for TikTok",
                     style: const TextStyle(
                       fontSize: Sizes.size24 + Sizes.size2,

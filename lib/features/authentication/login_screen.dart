@@ -15,7 +15,7 @@ class LoginScreen extends StatelessWidget {
     //     builder: (context) => const SignUpScreen(),
     //   ),
     // );
-    Navigator.of(context).pop();
+    Navigator.of(context).pop("Hello");
   }
 
   void _onEmilLoginTap(BuildContext context) {
