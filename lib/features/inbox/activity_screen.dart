@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/utils.dart';
 
 class ActivityScreen extends StatefulWidget {
+  static const String routeName = "activity";
+  static const String routeURL = "/activity";
   const ActivityScreen({super.key});
 
   @override
@@ -78,7 +79,6 @@ class _ActivityScreenState extends State<ActivityScreen>
   @override
   Widget build(BuildContext context) {
     final isDark = isDarkMode(context);
-    print(_notifications);
     return Scaffold(
       appBar: AppBar(
         title: GestureDetector(

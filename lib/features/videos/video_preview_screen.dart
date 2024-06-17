@@ -44,11 +44,24 @@ class _VideoPreviewScreenState extends State<VideoPreviewScreen> {
   Future<void> _saveToGallery() async {
     if (_saveVideo) return;
 
+    String filePath = widget.video.path;
+    if (!filePath.endsWith('.mp4') && !filePath.endsWith('.mov')) {
+      print('Error: The file is not a supported video format.');
+      print(filePath);
+      return;
+    }
+
+    if (!File(filePath).existsSync()) {
+      print('Error: The file does not exist.');
+      return;
+    }
+
     await GallerySaver.saveVideo(
       widget.video.path,
       albumName: "TikTok Clone",
     );
     _saveVideo = true;
+    setState(() {});
   }
 
   @override
@@ -58,13 +71,13 @@ class _VideoPreviewScreenState extends State<VideoPreviewScreen> {
       appBar: AppBar(
         title: const Text("Preview Video"),
         actions: [
-          if (!widget.isPicked)
-            IconButton(
-              onPressed: _saveToGallery,
-              icon: FaIcon(_saveVideo
-                  ? FontAwesomeIcons.check
-                  : FontAwesomeIcons.download),
+          // if (!widget.isPicked)
+          IconButton(
+            onPressed: _saveToGallery,
+            icon: FaIcon(
+              _saveVideo ? FontAwesomeIcons.check : FontAwesomeIcons.download,
             ),
+          ),
         ],
       ),
       body: _videoPlayerController.value.isInitialized
