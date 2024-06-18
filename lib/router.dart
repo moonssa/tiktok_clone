@@ -9,7 +9,7 @@ import 'package:tiktok_clone/features/onboarding/interests_screen.dart';
 import 'package:tiktok_clone/features/videos/video_recording_screen.dart';
 
 final router = GoRouter(
-  initialLocation: "/home",
+  initialLocation: "/upload",
   routes: [
     GoRoute(
       name: SignUpScreen.routeName,
